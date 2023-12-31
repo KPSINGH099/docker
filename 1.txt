@@ -1,0 +1,250 @@
+1.docker image ls 
+
+to delete docker image
+2. docker image rm <image id> or <container name> -f
+
+to delete container
+2. docker rm <container name> -f
+
+3. docker build -t <image-name-u-want> .
+
+4.port mapping krna padta h 
+
+5 docker run -d -p 3000:3000 --name <name of conrainer u want > <image name>
+docker run -d -p 8000:3001 --name node-app base-image
+             port-of-container:port_of_node_app
+
+6. show all container 
+docker ps -a
+
+if ur docker file is wrong then ur container may go into exited state
+
+7. container k andar ka maal dekhne k liye
+
+docker exec -it <container-name> bash
+
+
+
+docker exec -it node-app bash
+
+
+
+
+exit 
+
+
+then u exit from this container 
+
+
+8. use bind mount
+to sync everything
+
+
+docker run -d -v ${pwd}:/app -p 8000:3001 --name node-app base-image
+
+
+
+kyki ab bind mount ka use kr liya to agar koi v code change hua to 
+fir se image build 
+container run nhi krna hoga 
+bar bar ye sabkuch sync kr lega
+
+
+
+
+
+
+manlo apne index.js me 
+
+hii !!!!!!!!!!
+
+ko 
+
+kya hall h se 
+
+
+change diya ab hum endpoint ko acess krne ki kosis kr rhe h 
+
+
+
+fir v hii !!!!!!!!!!!!!!! hi print hoga
+
+
+
+
+lekin container k anadra krk dekhenge to 
+
+
+const express= require("express");
+
+const app=express();
+
+const port=process.env.port || 3001;
+
+app.get("/",(req,res)=>{
+console.log('data send');
+res.send("<h1>kya haal h ?</h1>");
+console.log('data send');
+})
+
+
+app.listen(port,()=>{
+    console.log(`running on ${port}`)
+
+
+
+change to hua h 
+
+
+bcz we need to restart our node application
+this is default behaviour of it
+
+
+
+
+-->par bind mount ki ek problem h ki ye node_modules wale folder ko v sync kr lega 
+
+so agar node_module ko apne working directory se delete kr diya to container se v gayab ho jayega 
+
+so iske liye v need to use ignore mount {{anonmous mount}} sab sync kro but ye wala folder jo /app directory me h usse sync mat kro
+
+
+docker run -d -v ${pwd}:/app -v /app/node_modules -p 8000:3001 --name node-app base-image
+
+---> bind mount ki ek aur problem h agar container k andar hum kuch v create krte h to wo local machine k anadar v create ho jayega
+
+so hum apne bind mount ko read only kr denge
+docker run -d -v ${pwd}:/app:ro -v /app/node_modules -p 8000:3001 --name node-app base-image
+
+
+
+
+
+
+Note : bind mount ka use kewal development env me hota h 
+
+
+
+9. to print log of container 
+
+docker logs <container name>
+
+docker logs node-app 
+
+
+
+
+
+10. using env
+
+in dockerfile
+
+ENV port 3001
+EXPOSE $port
+
+
+-> --env port=4000
+
+->docker run -d -v ${pwd}:/app -v /app/node_modules --env port=4000 -p 8000:4000 --name node-app base-image
+
+
+in linux 
+we can use command 
+printenv
+
+HOSTNAME=0c3e8b006ed2
+YARN_VERSION=1.22.19
+PWD=/app
+HOME=/root
+port=4000
+TERM=xterm
+SHLVL=1
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+NODE_VERSION=16.20.2
+
+
+
+so .env file se environment variables ko lene k liye use this flag
+--env-file <full path to .env file>
+--env-file ./.env
+
+docker run -d -v ${pwd}:/app -v /app/node_modules --env-file ./.env -p 8000:4000 --name node-app base-image
+
+
+
+11. docker volume ls
+
+
+
+
+bcz of anounous volume which we are using while running our docker application it is goono preserve our volume
+
+
+ to delete volume
+
+
+docker volume rm 38af70cad0a2717751b3e02ebb636c1d83fb3725308d9abf5bdd605997ae2d71
+
+
+delete all volume
+docker volume prune
+
+
+delete container and volume as well as
+
+docker rm node-app -fv
+
+
+12. docker compose
+
+way of automating our task
+
+
+1 create docker-compose.yaml file
+
+
+we are goono built our image 
+then start container from image 
+alternative of this
+docker run -d -v ${pwd}:/app -v /app/node_modules --env port=4000 -p 8000:4000 --name node-app base-image
+written into yml file
+
+
+version: "3"
+services:
+  node-app:
+    build: .
+    ports:
+      - "8000:4000"
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    environment:
+      - port=4000
+
+
+2.to run it in deatach mode
+docker-compose up -d
+
+
+3. for image name and container name it follows convention as
+
+repositry_name-services-name{from yaml file}
+
+4. 
+to bring down service
+
+
+docker-compose down 
+
+
+to delete anonmous volume
+docker-compose down -v
+
+ 5. 
+docker compose will keep on reffering that stale image
+
+docker-compose up -d --build
+
+
+13. 

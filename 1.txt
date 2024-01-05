@@ -247,4 +247,15 @@ docker compose will keep on reffering that stale image
 docker-compose up -d --build
 
 
-13. 
+13. https://www.youtube.com/watch?v=XuSQU5Grv1g&t=3282s
+
+
+https://www.youtube.com/watch?v=toLAU_QPF6o&t=14513s
+
+
+
+https://www.youtube.com/watch?v=rBeyHDKLVqM&t=4041s
+
+
+
+https://www.youtube.com/watch?v=JoHUi9KvnOA&t=12071s

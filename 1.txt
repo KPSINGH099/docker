@@ -266,6 +266,21 @@ docker-compose up -d --build
 10. for prod we may need to force rebuilt image
 docker compose -f docker-compose.yaml -f docker-compose.prod.yaml up -d --build
 
+11. we can imbedd bash script inside our docker file
+
+12. we can pass arg in our dockerfile from compose files
+
+13 . whatever is written in docker-compose file we can ovveride in docker-compose.de or .prod  yaml files
+
+14 .     build: 
+      context: .
+      args: 
+        App_Env: development
+        
+
+        context . is nothing but the location of dockerfile 
+        using args we will pass it to dockerfile
+
 13. https://www.youtube.com/watch?v=XuSQU5Grv1g&t=3282s
 
 

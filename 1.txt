@@ -250,8 +250,21 @@ docker-compose up -d --build
 6. docker compose will simply do docker image ls 
 if it got image with name repsoitry_name_service_name
 it will simply start container from it so if you made any changes to project it may it reffering 
-to stale image
+to stale image so we need to run 
+docker-compose up -d --build
 
+7. anything written in dockerfile can be overwritten into docker compose file
+
+8. docker compose -f docker-compose.yaml -f docker-compose.dev.yaml up -d
+
+
+9. docker compose -f docker-compose.yaml -f docker-compose.dev.yaml down -v
+
+
+//note in dev we are using bind mount also app_env is development
+
+10. for prod we may need to force rebuilt image
+docker compose -f docker-compose.yaml -f docker-compose.prod.yaml up -d --build
 
 13. https://www.youtube.com/watch?v=XuSQU5Grv1g&t=3282s
 

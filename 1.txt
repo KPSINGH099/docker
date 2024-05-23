@@ -247,6 +247,12 @@ docker compose will keep on reffering that stale image
 docker-compose up -d --build
 
 
+6. docker compose will simply do docker image ls 
+if it got image with name repsoitry_name_service_name
+it will simply start container from it so if you made any changes to project it may it reffering 
+to stale image
+
+
 13. https://www.youtube.com/watch?v=XuSQU5Grv1g&t=3282s
 
 

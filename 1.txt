@@ -281,6 +281,10 @@ docker compose -f docker-compose.yaml -f docker-compose.prod.yaml up -d --build
         context . is nothing but the location of dockerfile 
         using args we will pass it to dockerfile
 
+
+
+//note development mode not woring fine need to check bash script 
+
 13. https://www.youtube.com/watch?v=XuSQU5Grv1g&t=3282s
 
 

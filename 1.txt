@@ -364,7 +364,14 @@ note in dev mode we are using anonmous bind so if we are adding library need to 
 image build other code changes will be automatically syncronised
 #########################################################
 
+to bring up only node-app service
+note node-app mongo both are pescribe in docker compose so if we do 
+docker compose -f docker-compose.yaml -f docker-compose.dev.yaml up -d
+it will try to bring up both 
+so use to bring up only node-app service
+docker compose -f docker-compose.yaml -f docker-compose.dev.yaml up -d --no-deps node-app
 
+#####################################################################
 
 13. https://www.youtube.com/watch?v=XuSQU5Grv1g&t=3282s
 

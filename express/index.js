@@ -13,12 +13,23 @@ const {MONGO_IP,MONGO_PORT,MONGO_USER,MONGO_PASSWORD}= require("./config")
 //note we did not change any port 
 
 //mongoose.connect("mongodb://kishan:kishan@172.19.0.2:27017?authSource=admin")
-mongoose.connect(`mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}?authSource=admin`)
-.then(()=>{
-    console.log("sucessfully connected to db")
-}).catch((e)=>{
-    console.log(`db error ${e}`)
-})
+
+//mongoose automativaaly waits for 30 seconds to connect with db
+
+//but we can implement our logic too
+
+const connectWithRetry = () =>{
+    mongoose.connect(`mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}?authSource=admin`)
+    .then(()=>{
+        console.log("sucessfully connected to db")
+    }).catch((e)=>{
+        console.log("db error occured")
+        console.log(e)
+        setTimeout(connectWithRetry,5000)
+    })
+}
+
+connectWithRetry();
 
 app.get("/",(req,res)=>{
 console.log('data send');

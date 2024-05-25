@@ -285,6 +285,79 @@ docker compose -f docker-compose.yaml -f docker-compose.prod.yaml up -d --build
 
 //note development mode not woring fine need to check bash script 
 
+#######################################################
+adding new service in docker compose.yaml inside service section we can add
+ mongo:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=kishan
+      - MONGO_INITDB_ROOT_PASSWORD=kishan
+      volumes:
+      - mongo-db:/data/db
+
+named volume we are using here
+
+all the named volume also need to be declare in another section of docker compose yaml file 
+as a list
+so let say another instance of mongo can use it 
+
+
+open mongo container in interactive way  
+mongo -u "kishan" -p "kishan"
+
+anonmous bind mount path on local machine to path on container
+
+
+
+login to mongo container docker exec -it express-mongo-1 mongo -u "kishan" -p "kishan"
+
+
+###############################
+connection with another container 
+docker automatically assigns ip adress to container
+
+docker inspect  express-mongo-1
+
+
+if we create more than one container it also creates network and containers within same 
+network can talk to each other 
+
+    "Networks": {
+                "express_default": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "express-mongo-1",
+                        "mongo",
+                        "a8840dd5143e"
+                    ],
+                    "MacAddress": "02:42:ac:13:00:02",
+                    "NetworkID": "4c56cd92f0a4a461188e56121e787c17d4a909e610beefe71431e8bab15b0b72",
+                    "EndpointID": "d6f73770a5daab684f64c50588aa4a8112ae060f2a18bc74419a37b725c4c82a",
+                    "Gateway": "172.19.0.1",
+                    "IPAddress": "172.19.0.2",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DriverOpts": null
+                }}
+
+
+here is network information for container 
+
+
+#################################
+docker network ls
+bridge 
+host 
+comes with docker bundeled
+it has dns as well as 
+services can talk with each other using their names
+
+
+node-docker-default is default network created
+
 13. https://www.youtube.com/watch?v=XuSQU5Grv1g&t=3282s
 
 

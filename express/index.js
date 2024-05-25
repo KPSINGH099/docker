@@ -5,13 +5,15 @@ const app=express();
 
 const port=process.env.port || 3001;
 
+const {MONGO_IP,MONGO_PORT,MONGO_USER,MONGO_PASSWORD}= require("./config")
+
 
 //username:passsword@ip:port 
 
 //note we did not change any port 
 
 //mongoose.connect("mongodb://kishan:kishan@172.19.0.2:27017?authSource=admin")
-mongoose.connect("mongodb://kishan:kishan@mongo?authSource=admin")
+mongoose.connect(`mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}?authSource=admin`)
 .then(()=>{
     console.log("sucessfully connected to db")
 }).catch((e)=>{

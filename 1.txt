@@ -358,6 +358,14 @@ services can talk with each other using their names
 
 node-docker-default is default network created
 
+
+###############################################
+note in dev mode we are using anonmous bind so if we are adding library need to perform 
+image build other code changes will be automatically syncronised
+#########################################################
+
+
+
 13. https://www.youtube.com/watch?v=XuSQU5Grv1g&t=3282s
 
 

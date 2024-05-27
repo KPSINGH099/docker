@@ -1,10 +1,15 @@
 const User=require("../models/userModel");
 
+const bycrypt=require("bcryptjs");
 
 exports.signUp= async (req,res,next)=>{
-
+    const {username,password}= req.body;
+    const hashpassword= await bycrypt.hash(password,12);
     try{
-        const user=await User.create(req.body);
+        const user=await User.create({
+            username,
+            password:hashpassword,
+        });
 
         res.status(200).json({
             status: "sucess",
@@ -14,10 +19,7 @@ exports.signUp= async (req,res,next)=>{
         })
     }catch(e){
         res.status(400).json({
-            status: "bad req",
-            data:{
-                user,
-            }
+            status: "bad req"
         })
     }
    

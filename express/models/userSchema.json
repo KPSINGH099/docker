@@ -1,0 +1,11 @@
+{
+    "username":{
+        "type":"String",
+        "require":[true,"username is required"],
+        "unique":true
+    },
+    "password":{
+        "type":"String",
+        "require":[true,"password is required"]
+    }
+}

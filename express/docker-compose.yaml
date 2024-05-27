@@ -20,5 +20,8 @@ services:
       - "27017:27017"
     restart: always
 
+  redis:
+    image: redis
+
 volumes:
   mongo-db:

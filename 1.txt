@@ -373,6 +373,16 @@ docker compose -f docker-compose.yaml -f docker-compose.dev.yaml up -d --no-deps
 
 #####################################################################
 
+we can simply do 
+docker compose -f docker-compose.yaml -f docker-compose.dev.yaml up -d 
+
+again
+instead of doing down then up if have done any image change
+
+to renew old anonmous volume
+docker compose -f docker-compose.yaml -f docker-compose.dev.yaml up -d --build -V
+
+
 13. https://www.youtube.com/watch?v=XuSQU5Grv1g&t=3282s
 
 

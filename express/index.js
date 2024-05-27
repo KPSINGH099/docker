@@ -5,6 +5,8 @@ const app=express();
 
 const port=process.env.port || 3001;
 
+const postRouter=require("./routes/postRoutes");
+
 const {MONGO_IP,MONGO_PORT,MONGO_USER,MONGO_PASSWORD}= require("./config")
 
 
@@ -37,6 +39,9 @@ res.send("<h1>ka bolti public namstey bolo bolo bolo?</h1>");
 console.log('data send');
 })
 
+app.use(express.json());
+
+app.use("/posts",postRouter);
 
 app.listen(port,()=>{
     console.log(`running on ${port}`)

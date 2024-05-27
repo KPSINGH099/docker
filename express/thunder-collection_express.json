@@ -1,0 +1,81 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "express",
+    "collectionId": "fa84fe59-2b34-44f9-b3e0-2a50ed9b7cb2",
+    "dateExported": "2024-05-27T09:38:17.679Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "d606e062-541b-43de-b742-1da1daa96459",
+            "colId": "fa84fe59-2b34-44f9-b3e0-2a50ed9b7cb2",
+            "containerId": "",
+            "name": "create post",
+            "url": "http://localhost:8000/posts",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-05-27T09:33:46.160Z",
+            "modified": "2024-05-27T09:33:46.160Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\":\"abc2\",\n  \"body\":\"def\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "e0b6f8f9-eceb-4dbe-9d20-a572fbffaeb6",
+            "colId": "fa84fe59-2b34-44f9-b3e0-2a50ed9b7cb2",
+            "containerId": "",
+            "name": "get all",
+            "url": "http://localhost:8000/posts",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-05-27T09:34:49.421Z",
+            "modified": "2024-05-27T09:34:49.421Z",
+            "headers": []
+        },
+        {
+            "_id": "bb2b4950-a363-43db-bc72-81894f30d374",
+            "colId": "fa84fe59-2b34-44f9-b3e0-2a50ed9b7cb2",
+            "containerId": "",
+            "name": "get one",
+            "url": "http://localhost:8000/posts/665453360aaf4553168743dd",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-05-27T09:35:36.707Z",
+            "modified": "2024-05-27T09:35:36.707Z",
+            "headers": []
+        },
+        {
+            "_id": "2f32e243-51ec-48e0-9803-bcb685120d2a",
+            "colId": "fa84fe59-2b34-44f9-b3e0-2a50ed9b7cb2",
+            "containerId": "",
+            "name": "update",
+            "url": "http://localhost:8000/posts/665453270aaf4553168743db",
+            "method": "PATCH",
+            "sortNum": 40000,
+            "created": "2024-05-27T09:37:02.502Z",
+            "modified": "2024-05-27T09:37:02.502Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\":\"123\",\n  \"body\":\"100\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "0d5565c9-bc12-417d-97f5-8a239fd7a571",
+            "colId": "fa84fe59-2b34-44f9-b3e0-2a50ed9b7cb2",
+            "containerId": "",
+            "name": "delete by id",
+            "url": "http://localhost:8000/posts/665453360aaf4553168743dd",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-05-27T09:38:04.925Z",
+            "modified": "2024-05-27T09:38:04.925Z",
+            "headers": []
+        }
+    ],
+    "ref": "4xbqUPQ4qJeqHgsLyYG5O55wBApDWebL9Rf5DnbmL5etGJ65uQmzUo5mKVkElGc9gtvz3doRod2V2sFdCcxLVw"
+}

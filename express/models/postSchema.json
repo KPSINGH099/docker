@@ -1,0 +1,10 @@
+{
+    "title":{
+        "type":"String",
+        "require":[true,"title is required"]
+    },
+    "body":{
+        "type":"String",
+        "require":[true,"body is required"]
+    }
+}

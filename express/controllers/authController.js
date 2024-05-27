@@ -4,8 +4,11 @@ const bycrypt=require("bcryptjs");
 
 exports.signUp= async (req,res,next)=>{
     const {username,password}= req.body;
-    const hashpassword= await bycrypt.hash(password,12);
+  
     try{
+
+        const hashpassword= await bycrypt.hash(password,12);
+        
         const user=await User.create({
             username,
             password:hashpassword,

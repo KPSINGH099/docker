@@ -37,7 +37,7 @@ connectWithRetry();
 
 app.get("/",(req,res)=>{
 console.log('data send');
-res.send("<h1>ka bolti public namstey bolo bolo bolo?</h1>");
+res.send("<h1>hi?</h1>");
 console.log('data send');
 })
 
